@@ -76,7 +76,7 @@ namespace Jokes.Repository
             }
 
             if (expression != null)
-                query = query.Where(expression).AsNoTracking();
+                query = query.Include(j => j.Type).Where(expression).AsNoTracking();
 
             var list = Entities.PaginatedList<Joke>.Create(query, pageNumber, pageSize);
 
